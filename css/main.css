@@ -21,6 +21,7 @@ body {
 
 #question_container {
     font-size: 3rem;
+    text-align: center;
 }
 
 #answers_container {
@@ -57,6 +58,27 @@ body {
     animation: answer_animation 2.5s infinite;
 }
 
+.button_container {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.next_button {
+    border: 3px solid red;
+    padding-inline: 0.4rem;
+    padding-block: 0.2rem;
+    font-size: 1.5rem;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.1);
+    user-select: none;
+}
+
 .skip_button {
     border: 3px solid blue;
     padding-inline: 0.4rem;
@@ -64,9 +86,6 @@ body {
     font-size: 1.5rem;
     width: fit-content;
     height: fit-content;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
     border-radius: 10px;
     background-color: rgba(255,255,255,0.1);
     user-select: none;
@@ -89,6 +108,27 @@ body {
     }
 }
 
+@keyframes next_button_animation {
+    0% {
+        border: 3px solid red;
+        color: white;
+    }
+
+    50% {
+        border: 3px solid greenyellow;
+        color: greenyellow;
+    }
+
+    100% {
+        border: 3px solid red;
+        color: white;
+    }
+}
+
+.next_button:hover {
+    animation: next_button_animation 2s infinite;
+}
+
 .skip_button:hover {
     animation: skip_button_animation 2.5s infinite;
 
@@ -100,4 +140,36 @@ body {
 
 .wrong {
     background-color: red;
+}
+
+@keyframes correct_animatioon {
+    from {
+        background-color: rgba(255,255,255,0.1);
+    }
+    to {
+        background-color: green;
+    }
+}
+
+@keyframes wrong_animatioon {
+    from {
+        background-color: rgba(255,255,255,0.1);
+    }
+    to {
+        background-color: red; 
+    }
+}
+
+.correct {
+    animation: correct_animatioon 1s 1;
+    animation-fill-mode: forwards;
+}
+
+.wrong {
+    animation: wrong_animatioon 1s 1;
+    animation-fill-mode: forwards;
+}
+
+.hidden {
+    display: none;
 }
