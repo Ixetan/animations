@@ -41,6 +41,11 @@ var valor = 0;
 const nextButton = document.getElementById('next_button');
 const skipButton = document.getElementById('skip_button');
 
+const valorDisplay = document.getElementById('valor')
+
+const endScreen = document.getElementById('endScreen')
+const valorEndScreen = document.getElementById('valorEndScreen')
+
 function selectAnswer(event, correct_answer){
     if (answerGiven)
         return
@@ -55,6 +60,7 @@ function selectAnswer(event, correct_answer){
         target.classList.add('correct')
         target.classList.remove('neutral')
         valor += 1
+        valorDisplay.innerText = valor
     }
     else {
         target.classList.add('wrong')
@@ -68,6 +74,12 @@ function selectAnswer(event, correct_answer){
 }
 
 function  newQuestion(){
+    if(currentQuestion == questions.length){
+        endScreen.classList.remove('hidden')
+        valorEndScreen.innerText = valor
+        return
+    }
+
     answerGiven = false
 
     nextButton.classList.add('hidden')
@@ -98,6 +110,12 @@ function  newQuestion(){
         answersContainer.append(newAnswer)
     }
 }   
+
+function tryAgain(){
+    endScreen.classList.add('hidden')
+    currentQuestion = 0
+    newQuestion()
+}
 
 function skip(){
     currentQuestion += 1
